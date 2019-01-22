@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
+// import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
 class AppDetail extends Component {
@@ -18,42 +18,35 @@ class AppDetail extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
-              <h1>
+            <div className="card">
+              <h2 className="card-header">
                 {this.state.apper.name} by {this.state.apper.author}
-              </h1>
-            </Jumbotron>
-          </Col>
-        </Row>
+              </h2>
+              <div className="card-body">
+                  
+                    <img className="card-img-top" src={this.state.apper.pic} alt={this.state.apper.name} />
+                    <h3 className="card-text" style={{margin: 20}}>Synopsis: </h3> 
+                    <p>{this.state.apper.synopsis}</p>
+
+                <Row>
+                  <Col size="md-10 md-offset-1">
+                    <article>
+                      <h3>Learn more:</h3>
+                      <p>Repository link: {this.state.apper.githublink}</p>
+                      <p>Deployed link: {this.state.apper.deploylink}</p>  
+                    </article>
+                  </Col>
+                </Row>
+              </div>
+            </div>
+          </Col>  
+        </Row>          
         <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
-              <h1>Synopsis</h1>
-              <p>
-                {this.state.apper.synopsis}
-              </p>
-            </article>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
-              <h1>Learn more:</h1>
-              <a herf={this.state.apper.githublink}>
-                Github Repository link
-              </a>
-              <a herf={this.state.apper.deploylink}>
-                Deployed App
-              </a>
-            </article>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-2">
-            <Link to="/">← Back to APPER TREE</Link>
+          <Col size="md-4">
+            <Link to="/">All Apps</Link>
           </Col>
         </Row>
       </Container>

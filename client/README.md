@@ -1,11 +1,3 @@
-https://dev.to/kmaryam27/step-by-step-react-nodejs-and-mysql-simple-full-stack-application-2018-part-4-2bhg
-https://medium.com/@avanthikameenakshi/crud-react-express-99025f03f06e
-https://github.com/AvanthikaMeenakshi/uthiramapp
-
-for login/signup case:
-https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669
-https://github.com/hurkanyakay/reactjs-nodejs-rest-example
-https://stormpath.com/blog/build-a-react-app-with-user-authentication
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

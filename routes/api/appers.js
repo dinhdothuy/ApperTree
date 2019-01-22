@@ -6,7 +6,7 @@ router.route("/")
   .get(appersController.findAll)
   .post(appersController.create);
 
-// Matches with "/api/books/:id"
+// Matches with "/api/appers/:id"
 router
   .route("/:id")
   .get(appersController.findById)

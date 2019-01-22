@@ -1,5 +1,7 @@
 const express = require("express");
-
+const passport = require('./passport/localStrategy.js');
+// const passport = require("./config/passport");
+const session = require("express-session");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
@@ -12,6 +14,12 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+// Passport
+app.use(session({ secret:"apper",resave:true,saveUninitialized:true}))
+app.use(passport.initialize())
+app.use(passport.session()) // calls the deserializeUser
+
 // Add routes, both API and view
 app.use(routes);
 

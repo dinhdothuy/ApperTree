@@ -1,3 +1,4 @@
 module.exports = {
-  Apper: require("./apper")
+  Apper: require("./apper"),
+  User: require("./user")
 };

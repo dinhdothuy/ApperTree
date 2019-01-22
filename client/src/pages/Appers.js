@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-// import Hero from "../components/Hero";
 
-class Books extends Component {
+class Appers extends Component {
   state = {
     appers: [],
     name: "",
@@ -16,18 +15,22 @@ class Books extends Component {
     synopsis: "",
     githublink: "",
     deploylink: "",
-    image: ""
+    pic: ""
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.loadAppers();
   }
 
   loadAppers = () => {
+    console.log("in load appers")
     API.getAppers()
-      .then(res =>
-        this.setState({ appers: res.data, title: "", author: "", synopsis: "", githublink: "", deploylink: "", image: "" })
-      )
+      .then(res => {
+           console.log("***** res")
+           console.log(res)
+           this.setState({appers: res.data, name: "", author: "", synopsis: "", githublink: "", deploylink: "", pic: "" })
+        } 
+    )
       .catch(err => console.log(err));
   };
 
@@ -48,12 +51,12 @@ class Books extends Component {
     event.preventDefault();
     if (this.state.name && this.state.author && this.state.githublink && this.state.deploylink) {
       API.saveApper({
-        title: this.state.title,
+        name: this.state.name,
         author: this.state.author,
         synopsis: this.state.synopsis,
         githublink: this.state.githublink,
         deploylink: this.state.deploylink,
-        image: this.state.image
+        pic: this.state.pic
       })
         .then(res => this.loadAppers())
         .catch(err => console.log(err));
@@ -63,15 +66,10 @@ class Books extends Component {
   render() {
     return (
       <Container fluid>
-        {/* <Row>
-          <Hero backgroundImage="../../public/images/mainpage.png">
-            <h2>Example Page</h2>
-          </Hero>
-        </Row> */}
         <Row>
-          <Col size="md-6">
+          <Col size="md-4">
             <Jumbotron>
-              <h1>New App to introduce:</h1>
+              <h5>New App to introduce:</h5>
             </Jumbotron>
             <form>
               <Input
@@ -99,9 +97,9 @@ class Books extends Component {
                 placeholder="Deployed App Link (required)"
               />
               <Input
-                value={this.state.image}
+                value={this.state.pic}
                 onChange={this.handleInputChange}
-                name="image"
+                name="pic"
                 placeholder="App Image/Logo Link (Optional)"
               />
               <TextArea
@@ -118,19 +116,31 @@ class Books extends Component {
               </FormBtn>
             </form>
           </Col>
-          <Col size="md-6 sm-12">
+          <Col size="md-8 sm-12">
             <Jumbotron>
-              <h1>Apps On My List</h1>
+              <h5>Apps On List</h5>
             </Jumbotron>
             {this.state.appers.length ? (
               <List>
                 {this.state.appers.map(apper => (
                   <ListItem key={apper._id}>
-                    <Link to={"/appers/" + apper._id}>
-                      <strong>
-                        {apper.name} by {apper.author}
-                      </strong>
-                    </Link>
+                    <div className="card">
+                      <h5 className="card-header">
+                        <Link to={"/appers/" + apper._id}>
+                          <strong>{apper.name}</strong> by <strong>{apper.author}</strong>
+                        </Link>
+                      </h5>
+                      <div className="card-body">
+                        <Row>
+                          <Col size="md-3 sm-12">
+                            <img className="card-img-top" src={apper.pic} alt={apper.name} />
+                          </Col>
+                          <Col size="md-9 sm-12">
+                            <p className="card-text">About the App:  {apper.synopsis}</p>
+                          </Col>
+                        </Row>
+                      </div>
+                    </div>
                     <DeleteBtn onClick={() => this.deleteApper(apper._id)} />
                   </ListItem>
                 ))}
@@ -145,4 +155,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Appers;
