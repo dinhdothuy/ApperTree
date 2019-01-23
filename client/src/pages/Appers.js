@@ -65,91 +65,85 @@ class Appers extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-4">
-            <Jumbotron>
-              <h5>New App to introduce:</h5>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.name}
-                onChange={this.handleInputChange}
-                name="name"
-                placeholder="Name (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <Input
-                value={this.state.githublink}
-                onChange={this.handleInputChange}
-                name="githublink"
-                placeholder="Github Repository Link (required)"
-              />
-              <Input
-                value={this.state.deploylink}
-                onChange={this.handleInputChange}
-                name="deploylink"
-                placeholder="Deployed App Link (required)"
-              />
-              <Input
-                value={this.state.pic}
-                onChange={this.handleInputChange}
-                name="pic"
-                placeholder="App Image/Logo Link (Optional)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.name && this.state.author && this.state.githublink && this.state.deploylink)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit App
-              </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-8 sm-12">
-            <Jumbotron>
-              <h5>Apps On List</h5>
-            </Jumbotron>
-            {this.state.appers.length ? (
-              <List>
-                {this.state.appers.map(apper => (
-                  <ListItem key={apper._id}>
-                    <div className="card">
-                      <h5 className="card-header">
-                        <Link to={"/appers/" + apper._id}>
-                          <strong>{apper.name}</strong> by <strong>{apper.author}</strong>
-                        </Link>
-                      </h5>
-                      <div className="card-body">
-                        <Row>
-                          <Col size="md-3 sm-12">
-                            <img className="card-img-top" src={apper.pic} alt={apper.name} />
-                          </Col>
-                          <Col size="md-9 sm-12">
-                            <p className="card-text">About the App:  {apper.synopsis}</p>
-                          </Col>
-                        </Row>
-                      </div>
-                    </div>
-                    <DeleteBtn onClick={() => this.deleteApper(apper._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-        </Row>
+      <Container>
+
+        <Jumbotron>
+          <h1 style={{textAlign: "center"}}>INTRODUCE NEW APP</h1>
+          <form>
+            <Input
+              value={this.state.name}
+              onChange={this.handleInputChange}
+              name="name"
+              placeholder="Name (required)"
+            />
+            <Input
+              value={this.state.author}
+              onChange={this.handleInputChange}
+              name="author"
+              placeholder="Author (required)"
+            />
+            <Input
+              value={this.state.githublink}
+              onChange={this.handleInputChange}
+              name="githublink"
+              placeholder="Github Repository Link (required)"
+            />
+            <Input
+              value={this.state.deploylink}
+              onChange={this.handleInputChange}
+              name="deploylink"
+              placeholder="Deployed App Link (required)"
+            />
+            <Input
+              value={this.state.pic}
+              onChange={this.handleInputChange}
+              name="pic"
+              placeholder="App Image/Logo Link (Optional)"
+            />
+            <TextArea
+              value={this.state.synopsis}
+              onChange={this.handleInputChange}
+              name="synopsis"
+              placeholder="Synopsis (Optional)"
+            />
+            <FormBtn
+              disabled={!(this.state.name && this.state.author && this.state.githublink && this.state.deploylink)}
+              onClick={this.handleFormSubmit}
+            >
+              Submit App
+            </FormBtn>
+          </form>
+        </Jumbotron>
+
+        {this.state.appers.length ? (
+          <List>
+            {this.state.appers.map(apper => (
+              <ListItem key={apper._id}>
+                <div className="card">
+                  <h5 className="card-header">
+                    <Link to={"/appers/" + apper._id}>
+                      <strong>{apper.name}</strong> by <strong>{apper.author}</strong>
+                    </Link>
+                  </h5>
+                  <div className="card-body">
+                    <Row>
+                      <Col size="md-3 sm-12">
+                        <img className="card-img-top" src={apper.pic} alt={apper.name} />
+                      </Col>
+                      <Col size="md-9 sm-12">
+                        <p className="card-text">About the App:  {apper.synopsis}</p>
+                      </Col>
+                    </Row>
+                  </div>
+                </div>
+                <DeleteBtn onClick={() => this.deleteApper(apper._id)} />
+              </ListItem>
+            ))}
+          </List>
+        ) : (
+          <h3>No Results to Display</h3>
+        )}
+
       </Container>
     );
   }

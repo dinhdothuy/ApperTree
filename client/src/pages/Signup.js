@@ -150,7 +150,7 @@ render() {
 							onChange={this.handleChange}
 						/>
 						<TextArea
-							placeholder="About me..."
+							placeholder="Skills"
 							type="text"
 							name="aboutMe"
 							value={this.state.aboutMe}

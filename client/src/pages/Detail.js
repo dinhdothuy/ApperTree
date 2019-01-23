@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import { Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
@@ -19,36 +18,28 @@ class AppDetail extends Component {
   render() {
     return (
       <Container>
-        <Row>
-          <Col size="md-12">
             <div className="card">
               <h2 className="card-header">
                 {this.state.apper.name} by {this.state.apper.author}
               </h2>
               <div className="card-body">
-                  
-                    <img className="card-img-top" src={this.state.apper.pic} alt={this.state.apper.name} />
-                    <h3 className="card-text" style={{margin: 20}}>Synopsis: </h3> 
-                    <p>{this.state.apper.synopsis}</p>
-
-                <Row>
-                  <Col size="md-10 md-offset-1">
-                    <article>
-                      <h3>Learn more:</h3>
-                      <p>Repository link: {this.state.apper.githublink}</p>
-                      <p>Deployed link: {this.state.apper.deploylink}</p>  
-                    </article>
-                  </Col>
-                </Row>
+                <img className="card-img-top" src={this.state.apper.pic} alt={this.state.apper.name} />
               </div>
-            </div>
-          </Col>  
-        </Row>          
-        <Row>
-          <Col size="md-4">
-            <Link to="/">All Apps</Link>
-          </Col>
-        </Row>
+              <div className="card-footer" style={{paddingBottom: 40}}>
+                <h3 className="card-text">Synopsis : </h3> 
+                <p>{this.state.apper.synopsis}</p>
+                <h3>Learn more :</h3>
+                <br />
+                <a target="blank" href={this.state.apper.githublink} 
+                  style={{backgroundColor: "green", color: "white", padding: 10, margin: 20}}>
+                  Repository link
+                </a>
+                <a target="blank" href={this.state.apper.deploylink}
+                  style={{backgroundColor: "green", color: "white", padding: 10, margin: 20}}>
+                  Deployed link
+                </a>
+              </div>
+            </div>       
       </Container>
     );
   }

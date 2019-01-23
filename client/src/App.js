@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios';
 import Appers from "./pages/Appers";
 import AppDetail from "./pages/Detail";
+import Profile from "./pages/Profile";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import HomePage from "./pages/HomePage";
@@ -16,7 +17,6 @@ class App extends Component {
       loggedIn: false,
       name: null
     }
-
     this.getUser = this.getUser.bind(this)
     this.componentWillMount = this.componentWillMount.bind(this)
     this.updateUser = this.updateUser.bind(this)
@@ -81,6 +81,7 @@ class App extends Component {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/appers" component={Appers} />
             <Route exact path="/appers/:id" component={AppDetail} />
+            <Route exact path="/profile" component={Profile} />
             <Route component={NoMatch} />
           </Switch>
 

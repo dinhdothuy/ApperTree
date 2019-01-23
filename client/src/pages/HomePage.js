@@ -3,8 +3,6 @@ import axios from 'axios'
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
 import { Link } from "react-router-dom";
 
 class HomePage extends Component {
@@ -30,7 +28,7 @@ class HomePage extends Component {
       .then(res => {
            console.log("***** res")
            console.log(res)
-           this.setState({appers: res.data, name: "", author: "", synopsis: "", githublink: "", deploylink: "", pic: "" })
+           this.setState({appers: res.data})
         } 
     )
       .catch(err => console.log(err));
@@ -51,7 +49,6 @@ class HomePage extends Component {
           github: response.data.user.github,
           linkedin: response.data.user.linkedin,
           avatar: response.data.user.avatar,
-          // appers : [{ type: Schema.Types.ObjectId, ref: 'Apper' }]
         })
       } else {
         console.log('Get user: no user');
@@ -64,60 +61,109 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
       <Container fluid>
-      <Row>
-        <Col size="md-4">
-          <Jumbotron>
-            <h5>Hello, {this.state.name}!</h5>
-          </Jumbotron>
+        <Row>
 
-          <p>Email: {this.state.email}!</p>
-          <p>aboutMe, {this.state.aboutMe}!</p>
-          <p>jobPosition, {this.state.jobPosition}!</p>
-          <p>location, {this.state.location}!</p>
-          <p>phone, {this.state.phone}!</p>
-          <p>github, {this.state.github}!</p>
-          <p>linkedin, {this.state.linkedin}!</p>
-          <p>avatar, {this.state.avatar}!</p>
+          <Col size="md-3">
+            <div className="card" style={{marginBottom: 10}}>
+              <div className="card-header" style={{textAlign: "center"}}>
+                <h4 style={{color: "green", marginBottom: 10}}>Hello, {this.state.name}!</h4>
+                <img className="card-img-top" src={this.state.avatar} alt={this.state.name} />
+              </div>
+              <div className="card-body">
+                <p><i className="fa fa-address-card-o fa-fw" style={{marginRight: 20}}></i>{this.state.jobPosition}</p>
+                <p><i className="fa fa-home fa-fw" style={{marginRight: 20}}></i>{this.state.location}</p>
+                <p><i className="fa fa-phone fa-fw" style={{marginRight: 20}}></i>{this.state.phone}</p>
+                <p><i className="fa fa-envelope fa-fw" style={{marginRight: 20}}></i>{this.state.email}</p>
+                <p><i className="fa fa-github fa-fw" style={{marginRight: 20}}></i>
+                  <a target="blank" href={this.state.github} 
+                    style={{color: "black"}}>
+                    My Github
+                  </a>
+                </p>
+                <p><i className="fa fa-linkedin fa-fw" style={{marginRight: 20}}></i>
+                  <a target="blank" href={this.state.linkedin} 
+                    style={{color: "black"}}>
+                    My LinkedIn
+                  </a>
+                </p>
+              </div>
+              <div className="card-footer">
+                <p><i className="fa fa-thumbs-up fa-fw" style={{marginRight: 20}}></i>Skills:</p>
+                <p>{this.state.aboutMe}</p>
+              </div>          
+            </div>
+          </Col>
 
-
-        
-
-        </Col>
-        <Col size="md-8 sm-12">
-          <Jumbotron>
-            <h5>Apps On List</h5>
-          </Jumbotron>
-          {this.state.appers.length ? (
-            <List>
-              {this.state.appers.map(apper => (
-                <ListItem key={apper._id}>
-                  <div className="card">
-                    <h5 className="card-header">
-                      <Link to={"/appers/" + apper._id}>
-                        <strong>{apper.name}</strong> by <strong>{apper.author}</strong>
-                      </Link>
-                    </h5>
-                    <div className="card-body">
-                      <Row>
-                        <Col size="md-3 sm-12">
-                          <img className="card-img-top" src={apper.pic} alt={apper.name} />
-                        </Col>
-                        <Col size="md-9 sm-12">
-                          <p className="card-text">About the App:  {apper.synopsis}</p>
-                        </Col>
-                      </Row>
+          <Col size="md-7 sm-12">
+            <h4 
+              style={{backgroundColor: "lightgray", color: "white", padding: 10, marginTop: 2, textAlign: "center"}}>
+              Apps Community
+            </h4>
+            {this.state.appers.length ? (
+              <List>
+                {this.state.appers.map(apper => (
+                  <ListItem key={apper._id}>
+                    <div className="card">
+                      <h5 className="card-header">
+                        <Link to={"/appers/" + apper._id}>
+                          <strong>{apper.name}</strong> by <strong>{apper.author}</strong>
+                        </Link>
+                      </h5>
+                      <div className="card-body">
+                        <Row>
+                          <Col size="md-4 sm-12">
+                            <img className="card-img-top" src={apper.pic} alt={apper.name} />
+                          </Col>
+                          <Col size="md-8 sm-12">
+                            <p className="card-text">About the App:  {apper.synopsis}</p>
+                          </Col>
+                        </Row>
+                      </div>
                     </div>
-                  </div>
-                  <DeleteBtn onClick={() => this.deleteApper(apper._id)} />
-                </ListItem>
-              ))}
-            </List>
-          ) : (
-            <h3>No Results to Display</h3>
-          )}
-        </Col>
-      </Row>
-    </Container>
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
+          </Col>
+          <Col size="md-2">
+
+            <div className="card" style={{marginBottom: 10, textAlign: "center"}}>
+              <div className="card-header">
+                <h5 style={{color: "green"}}>Hot app!</h5>
+              </div>
+              <div className="card-body">
+                <img className="card-img-top" 
+                  src="https://dinhdothuy.github.io/Main-portfolio/images/Sucky-Number.png" 
+                  alt="hotapp" 
+                  style={{marginBottom: 20}}
+                />
+                <p><strong>Sucky Numbers</strong></p>
+                <p>Best app for your lotery number</p>
+                <button className="btn btn-success">Download</button>  
+              </div>         
+            </div>
+
+            <div className="card" style={{marginBottom: 10, textAlign: "center"}}>
+              <div className="card-header">
+                <h5 style={{color: "green"}}>Most download app!</h5>
+              </div>
+              <div className="card-body">
+                <img className="card-img-top" 
+                  src="https://dinhdothuy.github.io/Main-portfolio/images/touch-me.png" 
+                  alt="hotapp" 
+                  style={{marginBottom: 20}}
+                />
+                <p><strong>Touch Me</strong></p>
+                <p>Best app to photoshop yourself</p>
+                <button className="btn btn-success">Download</button>  
+              </div>     
+            </div>
+
+          </Col>
+        </Row>
+      </Container>
     </div>
     );
   }
