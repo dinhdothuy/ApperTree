@@ -2,24 +2,57 @@ import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import axios from 'axios'
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Appers extends Component {
-  state = {
-    appers: [],
-    name: "",
-    author: "",
-    synopsis: "",
-    githublink: "",
-    deploylink: "",
-    pic: ""
-  };
+
+  constructor() {
+    super()
+    this.state = {
+      appers: [],
+      name: "",
+      author: "",
+      synopsis: "",
+      githublink: "",
+      deploylink: "",
+      pic: ""
+    }
+
+    this.getUser = this.getUser.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+  }
 
   componentDidMount = () => {
     this.loadAppers();
+    this.getUser();
+  }
+
+  getUser() {
+    axios.get('/user/login').then(response => {
+    console.log('Get user response: ')
+    console.log(response.data)
+    if (response.data.user) {
+        this.setState({
+        name: response.data.user.name,
+        email: response.data.user.email,
+        aboutMe: response.data.user.aboutMe,
+        jobPosition: response.data.user.jobPosition,
+        location: response.data.user.location,
+        phone: response.data.user.phone,
+        github: response.data.user.github,
+        linkedin: response.data.user.linkedin,
+        avatar: response.data.user.avatar,
+        });
+        this.state.author = response.data.user.name;
+    } else {
+        console.log('Get user: no user');
+        window.location.pathname = "/login"
+    }
+    })
   }
 
   loadAppers = () => {
@@ -28,7 +61,7 @@ class Appers extends Component {
       .then(res => {
            console.log("***** res")
            console.log(res)
-           this.setState({appers: res.data, name: "", author: "", synopsis: "", githublink: "", deploylink: "", pic: "" })
+           this.setState({appers: res.data, name: "", synopsis: "", githublink: "", deploylink: "", pic: "" })
         } 
     )
       .catch(err => console.log(err));
@@ -49,7 +82,7 @@ class Appers extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.name && this.state.author && this.state.githublink && this.state.deploylink) {
+    if (this.state.name && this.state.githublink && this.state.deploylink) {
       API.saveApper({
         name: this.state.name,
         author: this.state.author,
@@ -76,12 +109,12 @@ class Appers extends Component {
               name="name"
               placeholder="Name (required)"
             />
-            <Input
+            {/* <Input
               value={this.state.author}
               onChange={this.handleInputChange}
               name="author"
               placeholder="Author (required)"
-            />
+            /> */}
             <Input
               value={this.state.githublink}
               onChange={this.handleInputChange}
