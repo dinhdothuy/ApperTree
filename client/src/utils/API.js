@@ -16,5 +16,22 @@ export default {
   // Saves a apper to the database
   saveApper: function(apperData) {
     return axios.post("/api/appers", apperData);
+  },
+
+  // Gets all users
+  getUsers: function() {
+    return axios.get("/api/users/");
+  },
+  // Gets the apper with the given id
+  getUser: function(id) {
+    return axios.get("/api/users/" + id);
+  },
+  // Deletes the apper with the given id
+  deleteUser: function(id) {
+    return axios.delete("/api/users/" + id);
+  },
+  // Saves a apper to the database
+  saveUser: function(userData) {
+    return axios.post("/api/users", userData);
   }
 };

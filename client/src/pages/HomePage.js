@@ -10,6 +10,7 @@ class HomePage extends Component {
     super()
     this.state = {
       appers: [],
+      users: [],
       name: null
     }
 
@@ -20,6 +21,7 @@ class HomePage extends Component {
   componentDidMount() {
     this.getUser();
     this.loadAppers();
+    this.loadUsers();
   }
 
   loadAppers = () => {
@@ -29,6 +31,18 @@ class HomePage extends Component {
            console.log("***** res")
            console.log(res)
            this.setState({appers: res.data})
+        } 
+    )
+      .catch(err => console.log(err));
+  };
+
+  loadUsers = () => {
+    console.log("in load users")
+    API.getUsers()
+      .then(res => {
+           console.log("***** res")
+           console.log(res)
+           this.setState({users: res.data})
         } 
     )
       .catch(err => console.log(err));
