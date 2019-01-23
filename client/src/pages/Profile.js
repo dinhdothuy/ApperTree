@@ -45,13 +45,17 @@ class Profile extends Component {
             <div className="Profile">
                 <Container>
                     <div className="card" style={{marginBottom: 20}}>
-                        <div className="card-header" style={{textAlign: "center"}}>
+                        <div className="card-header" style={{textAlign: "center", color: "green"}}>
                             <h1>{this.state.name}     <i className="fa fa-pencil-square-o" aria-hidden="true"></i></h1>
                         </div>
                         <div className="card-body">
                             <Row>
                                 <Col size="md-4">
-                                    <img className="card-img-top" src={this.state.avatar} alt={this.state.name} style={{marginBottom: 20}}/>
+                                    <img className="card-img-top img-thumbnail" 
+                                        src={this.state.avatar} 
+                                        alt={this.state.name} 
+                                        style={{marginBottom: 20}}
+                                    />
                                 </Col>
                                 <Col size="md-8">
                                     <p><i className="fa fa-address-card-o fa-fw" style={{marginRight: 20}}></i>{this.state.jobPosition}</p>
@@ -75,7 +79,7 @@ class Profile extends Component {
                             </Row>
                         </div>
                         <div className="card-footer">
-                        <h3>{this.state.name}'s Apps:</h3>
+                        <h4 style={{textAlign: "center", color: "green"}}>{this.state.name}'s Apps:</h4>
                         <img className="card-img-top" src="https://storage.googleapis.com/sales.appinst.io/2017/03/appinstitute-restaurant-brand.png" alt={this.state.name} />
                         </div>            
                     </div>

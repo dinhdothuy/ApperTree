@@ -67,7 +67,7 @@ class HomePage extends Component {
             <div className="card" style={{marginBottom: 10}}>
               <div className="card-header" style={{textAlign: "center"}}>
                 <h4 style={{color: "green", marginBottom: 10}}>Hello, {this.state.name}!</h4>
-                <img className="card-img-top" src={this.state.avatar} alt={this.state.name} />
+                <img className="card-img-top img-thumbnail" src={this.state.avatar} alt={this.state.name} />
               </div>
               <div className="card-body">
                 <p><i className="fa fa-address-card-o fa-fw" style={{marginRight: 20}}></i>{this.state.jobPosition}</p>
@@ -134,7 +134,7 @@ class HomePage extends Component {
                 <h5 style={{color: "green"}}>Hot app!</h5>
               </div>
               <div className="card-body">
-                <img className="card-img-top" 
+                <img className="card-img-top img-thumbnail" 
                   src="https://dinhdothuy.github.io/Main-portfolio/images/Sucky-Number.png" 
                   alt="hotapp" 
                   style={{marginBottom: 20}}
@@ -150,7 +150,7 @@ class HomePage extends Component {
                 <h5 style={{color: "green"}}>Most download app!</h5>
               </div>
               <div className="card-body">
-                <img className="card-img-top" 
+                <img className="card-img-top img-thumbnail" 
                   src="https://dinhdothuy.github.io/Main-portfolio/images/touch-me.png" 
                   alt="hotapp" 
                   style={{marginBottom: 20}}
