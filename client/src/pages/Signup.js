@@ -13,7 +13,7 @@ const panelStyle = {
     backgroundColor: 'rgb(128,128,128,0.9)',
     border: 0,
     padding: 20,
-    width: 390,
+    width: 350,
     margin: 20
   };
   
@@ -85,9 +85,12 @@ render() {
 	if(!this.state.redirect){
 	return (
 		<Container>
+			<div style={{textAlign: "center", color: "green", marginTop: 30}}>
+				<h1>APPER TREE</h1>
+			</div>
 			<Row>
 				<Col size="md-4">
-					<img src="../images/background.jpg" alt="appertree" style={{width: 450}}/>
+					<img src="../images/background.jpg" alt="appertree" style={{width: 400}}/>
 				</Col>
 				<Col size="md-4" style={divStyle}>
 					<form style={panelStyle} >
@@ -164,6 +167,9 @@ render() {
 						</FormBtn>
 						<p style={{ color: "white", marginBottom: 10 }}>Or login <Link to="/login"><strong>here</strong></Link></p>
 					</form>
+				</Col>
+				<Col size="md-4">
+					<img src="../images/background.jpg" alt="appertree" style={{width: 400}}/>
 				</Col>
 			</Row>
         </Container>

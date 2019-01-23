@@ -115,7 +115,7 @@ class HomePage extends Component {
                             <img className="card-img-top" src={apper.pic} alt={apper.name} />
                           </Col>
                           <Col size="md-8 sm-12">
-                            <p className="card-text">About the App:  {apper.synopsis}</p>
+                            <p className="card-text"><strong>About the App:</strong>  {apper.synopsis}</p>
                           </Col>
                         </Row>
                       </div>

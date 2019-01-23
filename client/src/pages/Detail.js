@@ -31,13 +31,18 @@ class AppDetail extends Component {
                 <h3>Learn more :</h3>
                 <br />
                 <a target="blank" href={this.state.apper.githublink} 
-                  style={{backgroundColor: "green", color: "white", padding: 10, margin: 20}}>
-                  Repository link
+                  style={{backgroundColor: "gray", color: "white", padding: 20, marginRight: 20}}>
+                  <i class="fa fa-github" style={{marginRight: 10}}></i>
+                  Repositorie
                 </a>
                 <a target="blank" href={this.state.apper.deploylink}
-                  style={{backgroundColor: "green", color: "white", padding: 10, margin: 20}}>
-                  Deployed link
+                  style={{backgroundColor: "gray", color: "white", padding: 20}}>
+                  <i class="fa fa-share" style={{marginRight: 10}}></i>
+                  Try App
                 </a>
+                <button className="btn btn-success float-right">
+                  Comment
+                </button>
               </div>
             </div>       
       </Container>
