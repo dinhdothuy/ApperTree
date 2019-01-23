@@ -6,6 +6,7 @@ const apperSchema = new Schema({
   // _creator : { type: Schema.Types.ObjectId, ref: 'User' },
   name: { type: String, required: true },
   author: { type: String, required: true },
+  authorID: String,
   synopsis: String,
   githublink: String,
   deploylink: String,

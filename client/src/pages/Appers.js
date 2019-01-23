@@ -16,6 +16,7 @@ class Appers extends Component {
       appers: [],
       name: "",
       author: "",
+      authorID: "",
       synopsis: "",
       githublink: "",
       deploylink: "",
@@ -37,6 +38,7 @@ class Appers extends Component {
     console.log(response.data)
     if (response.data.user) {
         this.setState({
+        _id: response.data.user._id,
         name: response.data.user.name,
         email: response.data.user.email,
         aboutMe: response.data.user.aboutMe,
@@ -46,8 +48,9 @@ class Appers extends Component {
         github: response.data.user.github,
         linkedin: response.data.user.linkedin,
         avatar: response.data.user.avatar,
-        });
-        this.state.author = response.data.user.name;
+        })
+        this.state.author = response.data.user.name
+        this.state.authorID = response.data.user._id
     } else {
         console.log('Get user: no user');
         window.location.pathname = "/login"
@@ -86,6 +89,7 @@ class Appers extends Component {
       API.saveApper({
         name: this.state.name,
         author: this.state.author,
+        authorID: this.state.authorID,
         synopsis: this.state.synopsis,
         githublink: this.state.githublink,
         deploylink: this.state.deploylink,
@@ -109,12 +113,6 @@ class Appers extends Component {
               name="name"
               placeholder="Name (required)"
             />
-            {/* <Input
-              value={this.state.author}
-              onChange={this.handleInputChange}
-              name="author"
-              placeholder="Author (required)"
-            /> */}
             <Input
               value={this.state.githublink}
               onChange={this.handleInputChange}
@@ -155,7 +153,11 @@ class Appers extends Component {
                 <div className="card">
                   <h5 className="card-header">
                     <Link to={"/appers/" + apper._id}>
-                      <strong>{apper.name}</strong> by <strong>{apper.author}</strong>
+                      <strong>{apper.name}</strong>
+                    </Link>
+                    __by__
+                    <Link to={"/users/" + apper.authorID}>
+                      <strong>{apper.author}</strong>
                     </Link>
                   </h5>
                   <div className="card-body">

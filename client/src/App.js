@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios';
 import Appers from "./pages/Appers";
 import AppDetail from "./pages/Detail";
+import Author from "./pages/Author";
 import Profile from "./pages/Profile";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import HomePage from "./pages/HomePage";
 import LoginForm from "./pages/Login";
 import Signup from "./pages/Signup";
+
 
 class App extends Component {
   constructor() {
@@ -81,6 +83,7 @@ class App extends Component {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/appers" component={Appers} />
             <Route exact path="/appers/:id" component={AppDetail} />
+            <Route exact path="/users/:id" component={Author} />
             <Route exact path="/profile" component={Profile} />
             <Route component={NoMatch} />
           </Switch>

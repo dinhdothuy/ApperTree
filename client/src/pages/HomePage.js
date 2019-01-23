@@ -10,7 +10,6 @@ class HomePage extends Component {
     super()
     this.state = {
       appers: [],
-      users: [],
       name: null
     }
 
@@ -21,7 +20,6 @@ class HomePage extends Component {
   componentDidMount() {
     this.getUser();
     this.loadAppers();
-    this.loadUsers();
   }
 
   loadAppers = () => {
@@ -31,18 +29,6 @@ class HomePage extends Component {
            console.log("***** res")
            console.log(res)
            this.setState({appers: res.data})
-        } 
-    )
-      .catch(err => console.log(err));
-  };
-
-  loadUsers = () => {
-    console.log("in load users")
-    API.getUsers()
-      .then(res => {
-           console.log("***** res")
-           console.log(res)
-           this.setState({users: res.data})
         } 
     )
       .catch(err => console.log(err));
@@ -120,10 +106,13 @@ class HomePage extends Component {
                     <div className="card">
                       <h5 className="card-header">
                         <Link to={"/appers/" + apper._id}>
-                          <strong>{apper.name}</strong> by <strong>{apper.author}</strong>
+                        <strong>{apper.name}</strong>
                         </Link>
-                      </h5>
-                      
+                        __by__
+                        <Link to={"/users/" + apper.authorID}>
+                          <strong>{apper.author}</strong>
+                        </Link>
+                      </h5>                     
                       <div className="card-body">
                         <Row>
                           <Col size="md-4 sm-12">

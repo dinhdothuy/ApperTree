@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Container } from "../components/Grid";
-// import Jumbotron from "../components/Jumbotron";
+import { Col, Row, Container } from "../components/Grid";
 import API from "../utils/API";
 
 class Author extends Component {
@@ -11,7 +10,10 @@ class Author extends Component {
     // e.g. localhost:3000/appers/599dcb67f0f16317844583fc
     componentDidMount() {
         API.getUser(this.props.match.params.id)
-        .then(res => this.setState({ user: res.data }))
+        .then(res => {
+            console.log(res);
+            this.setState({ user: res.data })
+        })
         .catch(err => console.log(err));
     }
 
