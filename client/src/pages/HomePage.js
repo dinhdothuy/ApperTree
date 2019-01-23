@@ -123,6 +123,7 @@ class HomePage extends Component {
                           <strong>{apper.name}</strong> by <strong>{apper.author}</strong>
                         </Link>
                       </h5>
+                      
                       <div className="card-body">
                         <Row>
                           <Col size="md-4 sm-12">
