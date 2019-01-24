@@ -16,15 +16,15 @@ To login and access the secure Apper Tree site, users create a site account with
 
 ## Team Members
 
-Daisy Thuy Dinh - Full Stack
-Abraham Muñoz - Full Stack
+* Daisy Thuy Dinh - Full Stack
+* Abraham Muñoz - Full Stack
 
 ## Future Features
 
 Future improvements to the web application include: 
- *Add user comments, reviews and app ratings   
- *Incorporate project or work referrals
- *An option to organize by category, total view, or by App developer 
- *Include Advertising
- *Serve as an App market
+* Add user comments, reviews and app ratings   
+* Incorporate project or work referrals
+* An option to organize by category, total view, or by App developer 
+* Include Advertising
+* Serve as an App market
 
