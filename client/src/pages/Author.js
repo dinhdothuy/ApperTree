@@ -37,7 +37,10 @@ class Author extends Component {
                             <p><i className="fa fa-address-card-o fa-fw" style={{marginRight: 20}}></i>{this.state.user.jobPosition}</p>
                             <p><i className="fa fa-home fa-fw" style={{marginRight: 20}}></i>{this.state.user.location}</p>
                             <p><i className="fa fa-phone fa-fw" style={{marginRight: 20}}></i>{this.state.user.phone}</p>
-                            <p><i className="fa fa-envelope fa-fw" style={{marginRight: 20}}></i>{this.state.user.email}</p>
+                            <p>
+                                <i className="fa fa-envelope fa-fw" style={{marginRight: 20}}></i>
+                                <a href={`mailto:${this.state.user.email}`}>{this.state.user.email}</a>
+                            </p>
                             <p><i className="fa fa-github fa-fw" style={{marginRight: 20}}></i>
                                 <a target="blank" href={this.state.user.github} 
                                     style={{color: "black"}}>
