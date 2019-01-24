@@ -143,15 +143,15 @@ class HomePage extends Component {
                   alt="hotapp" 
                   style={{marginBottom: 20}}
                 />
-                <p><strong>Sucky Numbers</strong></p>
-                <p>Best app for your lotery number</p>
+                <p><strong>Lucky Numbers</strong></p>
+                <p>Best app for your lottery numbers</p>
                 <button className="btn btn-success">Download</button>  
               </div>         
             </div>
 
             <div className="card" style={{marginBottom: 10, textAlign: "center"}}>
               <div className="card-header">
-                <h5 style={{color: "green"}}>Most download app!</h5>
+                <h5 style={{color: "green"}}>Trending app!</h5>
               </div>
               <div className="card-body">
                 <img className="card-img-top img-thumbnail" 
@@ -159,8 +159,8 @@ class HomePage extends Component {
                   alt="hotapp" 
                   style={{marginBottom: 20}}
                 />
-                <p><strong>Touch Me</strong></p>
-                <p>Best app to photoshop yourself</p>
+                <p><strong>Summer Design Studio</strong></p>
+                <p>Best app to photoshop summer swimwear outfits</p>
                 <button className="btn btn-success">Download</button>  
               </div>     
             </div>
