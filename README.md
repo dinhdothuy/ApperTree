@@ -1,6 +1,6 @@
 # Apper Tree
 
-Deployed Link:  https://appertree.herokuapp.com/
+Deployed Link:  https://appertree.herokuapp.com/login
 
 The Apper Tree web application provides member users a platform to quickly present an organized overview of their apps and professional profile.  A rolling card list of member submitted apps is displayed in an easy to use format.  The app allows members to publish their completed products to a wider audience, present projects still in the development phase, gain early access to upcoming apps, or simply engage other members for professional feedback.  The app will also serve as a marketplace for members wishing to monetize their work.  
 
